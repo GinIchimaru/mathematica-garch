@@ -1,0 +1,1500 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     45969,       1490]
+NotebookOptionsPosition[     37790,       1223]
+NotebookOutlinePosition[     40356,       1288]
+CellTagsIndexPosition[     40228,       1282]
+WindowTitle->Ogarch
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["GARCH SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"garch/ref/Ogarch\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["garch/ref/Ogarch"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/garch/ref/Ogarch.html"],
+                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$4401], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "garch/ref/Ogarch", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["Ogarch", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Ogarch", "[", 
+       RowBox[{
+        StyleBox["timeseries", "TI"], ",", 
+        StyleBox["garchlag", "TI"], ",", 
+        StyleBox["method", "TI"]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]Fits the given multivariate time series to a given \
+garch model entered at position 2 and gives desired output method specified \
+at position 3\n"
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Ogarch", "[", 
+       RowBox[{
+        StyleBox["timeseries", "TI"], ",", 
+        StyleBox["garchlag", "TI"], ",", 
+        StyleBox["method", "TI"], ",", 
+        StyleBox["date", "TI"]}], "]"}]], "InlineFormula"],
+     "\[LineSeparator]",
+     "Fits the given multivariate time series to a given garch model entered \
+at position 2 and gives desired output method specified at position 3 and \
+assigns date index entered at position 4 to a  specific method output"
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->401688687],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "The ",
+ Cell[BoxData[
+  StyleBox["timeseries", "TI"]], "InlineFormula",
+  ShowStringCharacters->False],
+ " must be a list. It must be a matrix whose columns are particular time \
+series."
+}], "Notes",
+ CellDingbat->"\[FilledCircle]",
+ CellID->1067943069],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox["garchlag", "TI"]], "InlineFormula",
+  ShowStringCharacters->False],
+ " must be a string of type :"
+}], "Notes",
+ CellDingbat->"\[FilledCircle]",
+ CellID->188460475],
+
+Cell[TextData[{
+ Cell[BoxData["\"\<garchmodel(\!\(\*
+StyleBox[\"n1\",
+FontSlant->\"Italic\"]\)\!\(\*
+StyleBox[\",\",
+FontSlant->\"Italic\"]\)\!\(\*
+StyleBox[\"n2\",
+FontSlant->\"Italic\"]\))\>\""], "InlineFormula"],
+ " or ",
+ Cell[BoxData["\"\<arma(\!\(\*
+StyleBox[\"n1\",
+FontSlant->\"Italic\"]\)\!\(\*
+StyleBox[\",\",
+FontSlant->\"Italic\"]\)\!\(\*
+StyleBox[\" \",
+FontSlant->\"Italic\"]\)\!\(\*
+StyleBox[\"n2\",
+FontSlant->\"Italic\"]\))+garchmodel(\!\(\*
+StyleBox[\"n3\",
+FontSlant->\"Italic\"]\)\!\(\*
+StyleBox[\",\",
+FontSlant->\"Italic\"]\)\!\(\*
+StyleBox[\"n4\",
+FontSlant->\"Italic\"]\))\>\""], "InlineFormula"],
+ ".\[LineSeparator]Availible garchmodels are: \"garch(n1, n2)\" and \
+\"aparch(n1, n2)\" with it's submodels."
+}], "Notes",
+ CellDingbat->"\[EmptyCircle]",
+ CellMargins->{{90, 12}, {5, 5}},
+ CellID->132605104],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox["method", "TI"]], "InlineFormula",
+  ShowStringCharacters->False],
+ " must be one of following strings:"
+}], "Notes",
+ CellDingbat->"\[FilledCircle]",
+ CellID->787967933],
+
+Cell[BoxData[GridBox[{
+   {Cell["      ", "TableRowIcon"], Cell["\"coef\"", "TableText"], Cell[
+    "parameter estimates", "TableText"]},
+   {Cell["      ", "TableRowIcon"], Cell["\"residuals\"", "TableText"], Cell[
+    "residuals", "TableText"]},
+   {Cell["      ", "TableRowIcon"], Cell["\"cvar\"", "TableText"], 
+    RowBox[{"conditional", " ", "sigma"}]},
+   {Cell["      ", "TableRowIcon"], Cell["\"ccor\"", "TableText"], Cell[
+    "conditional correlations", "TableText"]},
+   {Cell["      ", "TableRowIcon"], Cell["\"ccov\"", "TableText"], Cell[
+    "conditional covariances", "TableText"]},
+   {Cell["      ", "TableRowIcon"], "\"\<summary\>\"", Cell[
+    "results summary", "TableText"]},
+   {Cell["      ", "TableRowIcon"], Cell["\"plot\"", "TableText"], Cell[
+    "correlations plots", "TableText"]},
+   {Cell["      ", "TableRowIcon"], Cell["\"ll\"", "TableText"], 
+    RowBox[{"log", "-", 
+     RowBox[{"likelihood", " ", "at", " ", "estimated", " ", "optimum"}]}]}
+  }]], "2ColumnTableMod",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, 
+   "Rows" -> {None, None, None, None, None, None, None, {None}}, 
+   "RowsIndexed" -> {}},
+ GridBoxDividers->{
+  "Rows" -> {{True, True, True, True, True, True, True, True, True}}}},
+ CellID->20317533],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Details and Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellFrame->{{0, 0}, {0, 0.5}},
+ WholeCellGroupOpener->True,
+ CellID->144124562],
+
+Cell[BoxData[GridBox[{
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["ConditionalDistribution",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/ConditionalDistribution"], 
+    "\"\<NormalDistribution\>\"", Cell["\<\
+Option for type of conditional distribution used in modeling.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["IncludeMean",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/IncludeMean"], 
+    ButtonBox["False",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/False"], Cell["\<\
+Should we include mean in estimation as one more parameter or keep it fixed.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["Algorithm",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/Algorithm"], "\"\<nlminb\>\"", Cell["\<\
+A string parameter that determines the algorithm used for maximum likelihood \
+estimation of underlining univariate model.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["EstimationMethod",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/EstimationMethod"], 
+    "\"\<IndependentComponentAnalysis\>\"", Cell[TextData[{
+     "A string option that determines the method used in estimating \
+parameters of ",
+     Cell[BoxData["Ogarch"], "InlineFormula"],
+     " model."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["Leverage",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/Leverage"], 
+    ButtonBox["Null",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/Null"], Cell["\<\
+A logical flag for aparch models. Should the model be leveraged? By default 
+Leverage\[RightArrow] False for garch and true for aparch,the coresponding \
+flag is Null for default option.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["IncludeDelta",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/IncludeDelta"], 
+    ButtonBox["Null",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/Null"], Cell["\<\
+A logical flag which determines if parameter for the recursion equation delta \
+will be estimated or not. If IncludeDelta\[RightArrow]False then the shape \
+parameter will be kept fixed during the process of parameter optimization.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["IncludeSkew",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/IncludeSkew"], 
+    ButtonBox["Null",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/Null"], Cell["\<\
+A logical flag which determines if the parameter for the skewness of the \
+conditional distribution will be estimated or not. If IncludeSkew\[Rule]False \
+then the skewness parameter will be kept fixed during the optimization.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["IncludeShape",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/IncludeShape"], 
+    ButtonBox["Null",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/Null"], Cell["\<\
+Logical flag which determines if the parameter for the shape of the \
+conditional distribution will be estimated or not.If not,then shape parameter \
+will be kept fixed during the process of parameter estimation.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["Delta",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/Delta"], "2", Cell["\<\
+Numerical value, the exponent delta of the variance recursion in APARCH. By \
+default, this value will be fixed,otherwise the exponent will be estimated \
+together with the other parameters.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["Skew",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/Skew"], "1", Cell["\<\
+Numerical value, the skewness parameter of the conditional distribution.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["Shape",
+     BaseStyle->"Link",
+     ButtonData->"paclet:garch/ref/Shape"], "4", Cell["\<\
+A numerical value,the shape parameter of the conditional distribution.\
+\>", "TableText"]}
+  }]], "3ColumnTableMod",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, 
+   "Rows" -> {
+    None, None, None, None, None, None, None, None, None, None, {None}}, 
+   "RowsIndexed" -> {}},
+ GridBoxDividers->{
+  "Rows" -> {{
+     True, True, True, True, True, True, True, True, True, True, True, 
+      True}}}},
+ CellID->160583569]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(9)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->356339689],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(4)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->203345624],
+
+Cell["Lets estimate Ogarch of two time series:", "ExampleText",
+ CellID->21821893],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<garch`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->495784505],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ge", "=", 
+   RowBox[{"FinancialData", "[", 
+    RowBox[{"\"\<GE\>\"", ",", "\"\<FractionalChange\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<2005/01/01\>\"", ",", "\"\<2009/12/31\>\""}], "}"}], ",", 
+     "\"\<Value\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"msft", "=", 
+   RowBox[{"FinancialData", "[", 
+    RowBox[{"\"\<msft\>\"", ",", "\"\<FractionalChange\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<2005/01/01\>\"", ",", "\"\<2009/12/31\>\""}], "}"}], ",", 
+     "\"\<Value\>\""}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"mc", "=", 
+   RowBox[{"FinancialData", "[", 
+    RowBox[{"\"\<mcd\>\"", ",", "\"\<FractionalChange\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<2005/01/01\>\"", ",", "\"\<2009/12/31\>\""}], "}"}], ",", 
+     "\"\<Value\>\""}], "]"}]}], ";"}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->208840616],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ogarch", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"mc", ",", "msft"}], "}"}], "\[Transpose]"}], "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->185124669],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"omega\"\>", "\<\"alpha1\"\>", "\<\"beta1\"\>"},
+    {"\<\"y1\"\>", "0.015639463145885914`", "0.05983458349534121`", 
+     "0.925383020262163`"},
+    {"\<\"y2\"\>", "0.02214293796612412`", "0.07400593255403233`", 
+     "0.9076034763179014`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{275, 42},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]//TableForm=",
+ CellID->9698114]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->201901914],
+
+Cell["\<\
+As we can see \"garch(1,1)\" model and \"coef\" method are default. But we \
+must have in mind that next time the same command will give us different \
+output.\
+\>", "ExampleText",
+ CellID->166905389],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ogarch", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"mc", ",", "msft"}], "}"}], "\[Transpose]"}], "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->58188168],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"omega\"\>", "\<\"alpha1\"\>", "\<\"beta1\"\>"},
+    {"\<\"y1\"\>", "0.048850807919157316`", "0.08349205774917284`", 
+     "0.892897542047384`"},
+    {"\<\"y2\"\>", "0.006543453244754468`", "0.033784792531019424`", 
+     "0.9545146620069539`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{282, 42},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]//TableForm=",
+ CellID->749516108]
+}, Open  ]],
+
+Cell["\<\
+This is because the default estimation method is set to Independent Component \
+Analysis.\
+\>", "ExampleText",
+ CellID->360612801],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "EstimationMethod"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->50989134],
+
+Cell[BoxData[
+ StyleBox["\<\"EstimationMethod->\\\"IndependentComponentAnalysis\\\"\\n\\nA \
+string option that determines the method used in estimating parameters of \
+Ogarch model\\n***************************************************************\
+*******************\\n\\t\\t\\t\\t\\t*Awailible estimation \
+methods:*\\n******************************************************************\
+****************\\n- \\\"IndependentComponentAnalysis\\\"\\n- \
+\\\"MaximumLikelihood\\\"\\n- \\\"NonLinearLeastSquares\\\"\\n- \
+\\\"MethodOfMoments\\\"\\n\"\>", "MSG"]], "Print", "PrintUsage",
+ CellTags->"Info3624567643-3598288",
+ CellID->159882535]
+}, Open  ]],
+
+Cell["Now, if we change estimation method:", "ExampleText",
+ CellID->107131061],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ogarch", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+    RowBox[{"EstimationMethod", "\[Rule]", "\"\<MethodOfMoments\>\""}]}], 
+   "]"}], "==", 
+  RowBox[{"Ogarch", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+    RowBox[{"EstimationMethod", "\[Rule]", "\"\<MethodOfMoments\>\""}]}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->444973652],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->153468818]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ogarch", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+    RowBox[{"EstimationMethod", "\[Rule]", "\"\<MaximumLikelihood\>\""}]}], 
+   "]"}], "==", 
+  RowBox[{"Ogarch", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+    RowBox[{"EstimationMethod", "\[Rule]", "\"\<MaximumLikelihood\>\""}]}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->652821793],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->677012]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ogarch", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+    RowBox[{
+    "EstimationMethod", "\[Rule]", "\"\<NonLinearLeastSquares\>\""}]}], "]"}],
+   "==", 
+  RowBox[{"Ogarch", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+    RowBox[{
+    "EstimationMethod", "\[Rule]", "\"\<NonLinearLeastSquares\>\""}]}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->261842561],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->646981161]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->289002428],
+
+Cell["We can estimate higher order GARCH models:", "ExampleText",
+ CellID->622055698],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ogarch", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+     "\"\<garch(2,3)\>\"", ",", 
+     RowBox[{"EstimationMethod", "\[Rule]", "\"\<MethodOfMoments\>\""}]}], 
+    "]"}], "\[Transpose]"}], "//", "TableForm"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->584271705],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"y1\"\>", "\<\"y2\"\>"},
+    {"\<\"omega\"\>", "0.012071544142259766`", "0.03347485744136116`"},
+    {"\<\"alpha1\"\>", "0.12313892236496796`", "0.053936084520950466`"},
+    {"\<\"alpha2\"\>", "1.`*^-8", "0.14042173829889834`"},
+    {"\<\"beta1\"\>", "0.4212773568951379`", "0.07876331925621526`"},
+    {"\<\"beta2\"\>", "1.`*^-8", "1.`*^-8"},
+    {"\<\"beta3\"\>", "0.44140590630567594`", "0.6931327687225537`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{222, 108},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]//TableForm=",
+ CellID->44835169]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->181873647],
+
+Cell["\<\
+Lets now use APARCH as an underlining univariate garch model:\
+\>", "ExampleText",
+ CellID->33060714],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ogarch", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+     "\"\<aparch(2,1)\>\"", ",", 
+     RowBox[{"EstimationMethod", "\[Rule]", "\"\<MethodOfMoments\>\""}]}], 
+    "]"}], "\[Transpose]"}], "//", "TableForm"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->65832672],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"y1\"\>", "\<\"y2\"\>"},
+    {"\<\"omega\"\>", "0.009196046081252362`", "0.015795580014313696`"},
+    {"\<\"alpha1\"\>", "0.07958933506802678`", "0.015444311675697908`"},
+    {"\<\"alpha2\"\>", "1.`*^-8", "0.04991610632912936`"},
+    {"\<\"gamma1\"\>", "0.425350444405722`", 
+     RowBox[{"-", "0.99999999`"}]},
+    {"\<\"gamma2\"\>", 
+     RowBox[{"-", "0.09249684024399173`"}], "0.99999999`"},
+    {"\<\"beta1\"\>", "0.9316653459732653`", "0.9172013286871956`"},
+    {"\<\"delta\"\>", "0.6829792395088312`", "1.3705859648649377`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{230, 120},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]//TableForm=",
+ CellID->1133470]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Generalizations & Extensions",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1020263627],
+
+Cell["\<\
+If we want to see fitted conditional variances we would use next string input \
+at position 3 (we will display only first 4 members of list):\
+\>", "ExampleText",
+ CellID->174307659],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ogarch", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+     "\"\<garch(1,1)\>\"", ",", "\"\<cvar\>\"", ",", 
+     RowBox[{"EstimationMethod", "\[Rule]", "\"\<MethodOfMoments\>\""}]}], 
+    "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{
+     RowBox[{"1", ";;", "5"}], ",", "All"}], "]"}], "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->9042049],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"V.1\"\>", "\<\"V.2\"\>"},
+    {"\<\"1\"\>", "0.0005521131638172207`", "0.00038948023909722514`"},
+    {"\<\"2\"\>", "0.0005310652371442767`", "0.000363905422037862`"},
+    {"\<\"3\"\>", "0.0004963642516016779`", "0.00033669220045527714`"},
+    {"\<\"4\"\>", "0.0004689735551338848`", "0.0003128967082103889`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{215, 72},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]//TableForm=",
+ CellID->191639659]
+}, Open  ]],
+
+Cell["\<\
+So the output is a list that contains values and column/row names. If instead \
+we want to identify variances by date we would type next command:\
+\>", "ExampleText",
+ CellID->155214083],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"date", "=", 
+   RowBox[{
+    RowBox[{"FinancialData", "[", 
+     RowBox[{"\"\<msft\>\"", ",", "\"\<FractionalChange\>\"", ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<2005/01/01\>\"", ",", "\"\<2009/12/31\>\""}], "}"}]}], 
+     "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->173773921],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ogarch", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ge", ",", "msft"}], "}"}], "\[Transpose]"}], ",", 
+     "\"\<garch(1,1)\>\"", ",", "\"\<cvar\>\"", ",", "date", ",", 
+     RowBox[{"EstimationMethod", "\[Rule]", "\"\<MethodOfMoments\>\""}]}], 
+    "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{
+     RowBox[{"1", ";;", "5"}], ",", "All"}], "]"}], "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->230291881],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"V.1\"\>", "\<\"V.2\"\>"},
+    {"\<\"2005-01-04\"\>", "0.0005521131638172207`", 
+     "0.00038948023909722514`"},
+    {"\<\"2005-01-05\"\>", "0.0005310652371442767`", "0.000363905422037862`"},
+    {"\<\"2005-01-06\"\>", "0.0004963642516016779`", 
+     "0.00033669220045527714`"},
+    {"\<\"2005-01-07\"\>", "0.0004689735551338848`", "0.0003128967082103889`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{278, 72},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]//TableForm=",
+ CellID->148719610]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Options",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(4)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->72451438],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Algorithm",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->311414834],
+
+Cell[TextData[{
+ "Same as for ",
+ ButtonBox["Garch function.",
+  BaseStyle->"Link",
+  ButtonData->"paclet:garch/ReferencePages/Symbols/Garch#10608514"]
+}], "ExampleText",
+ CellID->52600786]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "ConditionalDistribution",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->297913057],
+
+Cell[TextData[{
+ "Same as for ",
+ ButtonBox["Garch function",
+  BaseStyle->"Link",
+  ButtonData->"paclet:garch/ReferencePages/Symbols/Garch#77712175"],
+ "."
+}], "ExampleText",
+ CellID->416623197]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Delta",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->238368198],
+
+Cell[TextData[{
+ "Same as for ",
+ ButtonBox["Garch function",
+  BaseStyle->"Link",
+  ButtonData->"paclet:garch/ReferencePages/Symbols/Garch#137046283"],
+ "."
+}], "ExampleText",
+ CellID->76590481]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "EstimationMethod",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->62186450],
+
+Cell["\<\
+Ideally we would always use maximum likelihood method, but when this method \
+is too slow, or when the model doesn't converge we should use  non-linear \
+Least-Squares or method of moments or independent component analysis in that \
+order.\
+\>", "ExampleText",
+ CellID->209782277],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ogarch", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ge", ",", "msft", ",", "mc"}], "}"}], "\[Transpose]"}], ",", 
+     "\"\<garch(1,1)\>\"", ",", "\"\<coef\>\"", ",", "date", ",", 
+     RowBox[{"EstimationMethod", "\[Rule]", "\"\<MaximumLikelihood\>\""}]}], 
+    "]"}], "//", "TableForm"}], "//", "AbsoluteTiming"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->776146022],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"70.7760480999999970208591548725962638855`7.870486222693326", ",", 
+   TagBox[GridBox[{
+      {"\<\"\"\>", "\<\"omega\"\>", "\<\"alpha1\"\>", "\<\"beta1\"\>"},
+      {"\<\"y1\"\>", "0.003803025574935393`", "0.10476707272601565`", 
+       "0.8960958622150507`"},
+      {"\<\"y2\"\>", "0.01261884678475408`", "0.062477519263909195`", 
+       "0.918215087285933`"},
+      {"\<\"y3\"\>", "0.09001155005339109`", "0.1565743733847179`", 
+       "0.7901395951263962`"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[2.0999999999999996`]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Function[BoxForm`e$, 
+     TableForm[BoxForm`e$]]]}], "}"}]], "Output",
+ ImageSize->{373, 57},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->901285321]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ogarch", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ge", ",", "msft", ",", "mc"}], "}"}], "\[Transpose]"}], ",", 
+     "\"\<garch(1,1)\>\"", ",", "\"\<coef\>\"", ",", "date", ",", 
+     RowBox[{
+     "EstimationMethod", "\[Rule]", "\"\<NonLinearLeastSquares\>\""}]}], 
+    "]"}], "//", "TableForm"}], "//", "AbsoluteTiming"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->227498169],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"15.66489600000000059765170590253546833992`7.21552742920491", ",", 
+   TagBox[GridBox[{
+      {"\<\"\"\>", "\<\"omega\"\>", "\<\"alpha1\"\>", "\<\"beta1\"\>"},
+      {"\<\"y1\"\>", "0.0482560122389375`", "0.17039902597202577`", 
+       "0.7835025046650523`"},
+      {"\<\"y2\"\>", "0.01616772418590944`", "0.0459573463867638`", 
+       "0.9385819108916711`"},
+      {"\<\"y3\"\>", "0.00572957468458523`", "0.07947887983107325`", 
+       "0.913399835918175`"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[2.0999999999999996`]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Function[BoxForm`e$, 
+     TableForm[BoxForm`e$]]]}], "}"}]], "Output",
+ ImageSize->{373, 57},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->5286122]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ogarch", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ge", ",", "msft", ",", "mc"}], "}"}], "\[Transpose]"}], ",", 
+     "\"\<garch(1,1)\>\"", ",", "\"\<coef\>\"", ",", "date", ",", 
+     RowBox[{"EstimationMethod", "\[Rule]", "\"\<MethodOfMoments\>\""}]}], 
+    "]"}], "//", "TableForm"}], "//", "AbsoluteTiming"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->62589634],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.20906920000000006609752745134755969048`6.103051071310039", ",", 
+   TagBox[GridBox[{
+      {"\<\"\"\>", "\<\"omega\"\>", "\<\"alpha1\"\>", "\<\"beta1\"\>"},
+      {"\<\"y1\"\>", "0.006866152070524694`", "0.06630496895356408`", 
+       "0.9262792023156146`"},
+      {"\<\"y2\"\>", "0.013891794240037801`", "0.07539159728118007`", 
+       "0.9072722841293243`"},
+      {"\<\"y3\"\>", "0.014671374509477475`", "0.042570029255453216`", 
+       "0.9434099280382727`"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[2.0999999999999996`]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Function[BoxForm`e$, 
+     TableForm[BoxForm`e$]]]}], "}"}]], "Output",
+ ImageSize->{366, 57},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->71882782]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ogarch", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ge", ",", "msft", ",", "mc"}], "}"}], "\[Transpose]"}], ",", 
+     "\"\<garch(1,1)\>\"", ",", "\"\<coef\>\"", ",", "date", ",", 
+     RowBox[{
+     "EstimationMethod", "\[Rule]", 
+      "\"\<IndependentComponentAnalysis\>\""}]}], "]"}], "//", "TableForm"}], 
+  "//", "AbsoluteTiming"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->35280741],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.41013780000000021885853129788301885128`6.402641787418281", ",", 
+   TagBox[GridBox[{
+      {"\<\"\"\>", "\<\"omega\"\>", "\<\"alpha1\"\>", "\<\"beta1\"\>"},
+      {"\<\"y1\"\>", "0.0036186842703070303`", "0.07904135441303693`", 
+       "0.9181150197160047`"},
+      {"\<\"y2\"\>", "0.011994490498588129`", "0.0688743665922053`", 
+       "0.9242777843022988`"},
+      {"\<\"y3\"\>", "0.040001156379578184`", "0.08005278031588242`", 
+       "0.9011382840593102`"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[2.0999999999999996`]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Function[BoxForm`e$, 
+     TableForm[BoxForm`e$]]]}], "}"}]], "Output",
+ ImageSize->{366, 57},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->74093619]
+}, Open  ]]
+}, Closed]]
+}, Closed]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Related Links"
+}], "RelatedLinksSection",
+ WholeCellGroupOpener->True,
+ CellID->1584193535],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData[
+     Cell["Garch", "RelatedLinks"]]],"paclet:garch/ref/Garch"},
+  "RefLink",
+  BaseStyle->"RelatedLinks"]], "RelatedLinks",
+ CellID->153060902],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Ugarch"]],"paclet:garch/ref/Ugarch"},
+  "RefLink",
+  BaseStyle->"RelatedLinks"]], "RelatedLinks",
+ CellID->35392257],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["DCCgarch"]],"paclet:garch/ref/DCCgarch"},
+  "RefLink",
+  BaseStyle->"RelatedLinks"]], "RelatedLinks",
+ CellID->732969538],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Ngarch"]],"paclet:garch/ref/Ngarch"},
+  "RefLink",
+  BaseStyle->"RelatedLinks"]], "RelatedLinks",
+ CellID->411346345]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 709},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Ogarch",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:garch/guide/garch", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2017, 9, 16, 19, 42, 29.5352368}", 
+    "history" -> {"1.1", "", "", ""}, "context" -> "garch`", "keywords" -> {},
+     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "garch Symbol", "language" -> "en", "paclet" -> "garch", 
+    "status" -> "None", "summary" -> 
+    "Ogarch[timeseries, garchlag, method] Fits the given multivariate time \
+series to a given garch model entered at position 2 and gives desired output \
+method specified at position 3 Ogarch[timeseries, garchlag, method, date] \
+Fits the given multivariate time series to a given garch model entered at \
+position 2 and gives desired output method specified at position 3 and \
+assigns date index entered at position 4 to a specific method output", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "Ogarch", "titlemodifier" -> 
+    "", "windowtitle" -> "Ogarch", "type" -> "Symbol", "uri" -> 
+    "garch/ref/Ogarch"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> 
+  "11.0 for Microsoft Windows (64-bit) (September 21, 2016)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[12670, 368, 387, 15, 30, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->356339689]},
+ "Info3624567643-3598288"->{
+  Cell[17364, 533, 641, 10, 70, "Print",
+   CellTags->"Info3624567643-3598288",
+   CellID->159882535]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 39951, 1271},
+ {"Info3624567643-3598288", 40101, 1275}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[578, 21, 2260, 53, 48, "AnchorBarGrid",
+ CellID->1],
+Cell[2841, 76, 283, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3149, 91, 1154, 30, 189, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4328, 125, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->401688687],
+Cell[5069, 151, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5103, 153, 272, 9, 70, "Notes",
+ CellID->1067943069],
+Cell[5378, 164, 207, 7, 70, "Notes",
+ CellID->188460475],
+Cell[5588, 173, 831, 29, 70, "Notes",
+ CellID->132605104],
+Cell[6422, 204, 212, 7, 70, "Notes",
+ CellID->787967933],
+Cell[6637, 213, 1297, 26, 70, "2ColumnTableMod",
+ CellID->20317533],
+Cell[CellGroupData[{
+Cell[7959, 243, 199, 5, 70, "ExampleSection",
+ CellID->144124562],
+Cell[8161, 250, 4414, 109, 70, "3ColumnTableMod",
+ CellID->160583569]
+}, Open  ]],
+Cell[12590, 362, 31, 0, 70, "SectionFooterSpacer"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12670, 368, 387, 15, 30, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->356339689],
+Cell[CellGroupData[{
+Cell[13082, 387, 195, 6, 25, "ExampleSection",
+ CellID->203345624],
+Cell[13280, 395, 82, 1, 33, "ExampleText",
+ CellID->21821893],
+Cell[13365, 398, 114, 3, 26, "Input",
+ CellID->495784505],
+Cell[13482, 403, 908, 23, 75, "Input",
+ CellID->208840616],
+Cell[CellGroupData[{
+Cell[14415, 430, 222, 8, 26, "Input",
+ CellID->185124669],
+Cell[14640, 440, 906, 24, 77, "Output",
+ CellID->9698114]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15583, 469, 125, 3, 8, "ExampleDelimiter",
+ CellID->201901914],
+Cell[15711, 474, 210, 5, 47, "ExampleText",
+ CellID->166905389],
+Cell[CellGroupData[{
+Cell[15946, 483, 221, 8, 26, "Input",
+ CellID->58188168],
+Cell[16170, 493, 910, 24, 77, "Output",
+ CellID->749516108]
+}, Open  ]],
+Cell[17095, 520, 140, 4, 70, "ExampleText",
+ CellID->360612801],
+Cell[CellGroupData[{
+Cell[17260, 528, 101, 3, 70, "Input",
+ CellID->50989134],
+Cell[17364, 533, 641, 10, 70, "Print",
+ CellTags->"Info3624567643-3598288",
+ CellID->159882535]
+}, Open  ]],
+Cell[18020, 546, 79, 1, 70, "ExampleText",
+ CellID->107131061],
+Cell[CellGroupData[{
+Cell[18124, 551, 527, 17, 70, "Input",
+ CellID->444973652],
+Cell[18654, 570, 161, 5, 35, "Output",
+ CellID->153468818]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18852, 580, 531, 17, 70, "Input",
+ CellID->652821793],
+Cell[19386, 599, 158, 5, 35, "Output",
+ CellID->677012]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19581, 609, 548, 19, 70, "Input",
+ CellID->261842561],
+Cell[20132, 630, 161, 5, 35, "Output",
+ CellID->646981161]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20342, 641, 125, 3, 70, "ExampleDelimiter",
+ CellID->289002428],
+Cell[20470, 646, 85, 1, 70, "ExampleText",
+ CellID->622055698],
+Cell[CellGroupData[{
+Cell[20580, 651, 387, 12, 70, "Input",
+ CellID->584271705],
+Cell[20970, 665, 1079, 26, 143, "Output",
+ CellID->44835169]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22098, 697, 125, 3, 70, "ExampleDelimiter",
+ CellID->181873647],
+Cell[22226, 702, 111, 3, 70, "ExampleText",
+ CellID->33060714],
+Cell[CellGroupData[{
+Cell[22362, 709, 387, 12, 70, "Input",
+ CellID->65832672],
+Cell[22752, 723, 1198, 29, 155, "Output",
+ CellID->1133470]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24011, 759, 210, 6, 70, "ExampleSection",
+ CellID->1020263627],
+Cell[24224, 767, 192, 4, 70, "ExampleText",
+ CellID->174307659],
+Cell[CellGroupData[{
+Cell[24441, 775, 486, 16, 70, "Input",
+ CellID->9042049],
+Cell[24930, 793, 977, 24, 107, "Output",
+ CellID->191639659]
+}, Open  ]],
+Cell[25922, 820, 196, 4, 70, "ExampleText",
+ CellID->155214083],
+Cell[26121, 826, 402, 12, 70, "Input",
+ CellID->173773921],
+Cell[CellGroupData[{
+Cell[26548, 842, 501, 16, 70, "Input",
+ CellID->230291881],
+Cell[27052, 860, 1025, 26, 107, "Output",
+ CellID->148719610]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[28126, 892, 187, 6, 70, "ExampleSection",
+ CellID->72451438],
+Cell[CellGroupData[{
+Cell[28338, 902, 196, 6, 70, "ExampleSubsection",
+ CellID->311414834],
+Cell[28537, 910, 189, 6, 70, "ExampleText",
+ CellID->52600786]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[28763, 921, 210, 6, 70, "ExampleSubsection",
+ CellID->297913057],
+Cell[28976, 929, 195, 7, 70, "ExampleText",
+ CellID->416623197]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[29208, 941, 192, 6, 70, "ExampleSubsection",
+ CellID->238368198],
+Cell[29403, 949, 195, 7, 70, "ExampleText",
+ CellID->76590481]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[29635, 961, 202, 6, 70, "ExampleSubsection",
+ CellID->62186450],
+Cell[29840, 969, 290, 6, 70, "ExampleText",
+ CellID->209782277],
+Cell[CellGroupData[{
+Cell[30155, 979, 442, 12, 70, "Input",
+ CellID->776146022],
+Cell[30600, 993, 1138, 28, 78, "Output",
+ CellID->901285321]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31775, 1026, 452, 13, 70, "Input",
+ CellID->227498169],
+Cell[32230, 1041, 1133, 28, 78, "Output",
+ CellID->5286122]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33400, 1074, 439, 12, 70, "Input",
+ CellID->62589634],
+Cell[33842, 1088, 1141, 28, 78, "Output",
+ CellID->71882782]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35020, 1121, 463, 14, 70, "Input",
+ CellID->35280741],
+Cell[35486, 1137, 1140, 28, 78, "Output",
+ CellID->74093619]
+}, Open  ]]
+}, Closed]]
+}, Closed]],
+Cell[36665, 1170, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36733, 1175, 280, 12, 70, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[37016, 1189, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[37050, 1191, 191, 6, 70, "RelatedLinks",
+ CellID->153060902],
+Cell[37244, 1199, 164, 5, 70, "RelatedLinks",
+ CellID->35392257],
+Cell[37411, 1206, 169, 5, 70, "RelatedLinks",
+ CellID->732969538],
+Cell[37583, 1213, 165, 5, 70, "RelatedLinks",
+ CellID->411346345]
+}, Open  ]],
+Cell[37763, 1221, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
